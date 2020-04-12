@@ -1,5 +1,5 @@
 variable "project" {
-  default = "gcp-gcs-pso"
+  default = ""
 }
 
 variable "location" {
@@ -12,4 +12,8 @@ variable "cluster_name" {
 
 variable "node_pool" {
   default = "student_01_node_pool"
+}
+
+variable "machine_type" {
+  default = "n1-standard-1"
 }

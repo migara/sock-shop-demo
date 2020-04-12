@@ -7,11 +7,11 @@ variable "location" {
 }
 
 variable "cluster_name" {
-  default = "student_01_cluster"
+  default = "student-01-cluster"
 }
 
 variable "node_pool" {
-  default = "student_01_node_pool"
+  default = "student-01-node-pool"
 }
 
 variable "machine_type" {

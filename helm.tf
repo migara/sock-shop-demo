@@ -9,17 +9,28 @@ provider "helm" {
 
 data "google_client_config" "default" {}
 
+# data "helm_repository" "incubator" {
+#   name = "incubator"
+#   url  = "https://migara.github.io/sock-shop-demo"
+# }
+
+# output "name" {
+#   value = data.helm_repository.incubator.metadata[0].name
+# }
+
+# resource "helm_release" "my_cache" {
+#   name       = "my-cache"
+#   repository = data.helm_repository.incubator.metadata[0].name
+#   chart      = "helm-chart"
+# }
+
 data "helm_repository" "incubator" {
   name = "incubator"
-  url  = "https://migara.github.io/sock-shop-demo"
-}
-
-output "name" {
-  value = data.helm_repository.incubator.metadata[0].name
+  url  = "https://kubernetes-charts-incubator.storage.googleapis.com"
 }
 
 resource "helm_release" "my_cache" {
   name       = "my-cache"
   repository = data.helm_repository.incubator.metadata[0].name
-  chart      = "helm-chart"
+  chart      = "redis-cache"
 }

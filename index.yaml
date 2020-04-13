@@ -1,0 +1,16 @@
+apiVersion: v1
+entries:
+  helm-chart:
+  - apiVersion: v1
+    created: "2020-04-13T21:33:02.008548+01:00"
+    dependencies:
+    - name: nginx-ingress
+      repository: https://kubernetes-charts.storage.googleapis.com
+      version: 0.4.2
+    description: A Helm chart for Sock Shop
+    digest: 3dac5b0a0c87944c2a9929823ec96ef7d608a621ed0caaad9e16342e07d81fd1
+    name: helm-chart
+    urls:
+    - https://migara.github.io/sock-shop-demo/helm-chart-0.2.0.tgz
+    version: 0.2.0
+generated: "2020-04-13T21:33:02.007152+01:00"

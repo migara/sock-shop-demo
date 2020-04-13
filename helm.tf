@@ -18,8 +18,8 @@ output "name" {
   value = data.helm_repository.incubator.metadata[0].name
 }
 
-# resource "helm_release" "my_cache" {
-#   name       = "my-cache"
-#   repository = data.helm_repository.incubator.metadata[0].name
-#   chart      = "redis-cache"
-# }
+resource "helm_release" "my_cache" {
+  name       = "my-cache"
+  repository = data.helm_repository.incubator.metadata[0].name
+  chart      = "incubator/helm-chart"
+}

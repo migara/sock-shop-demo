@@ -24,7 +24,7 @@ data "google_client_config" "default" {}
 #   chart      = "helm-chart"
 # }
 
-# resource "helm_release" "local" {
-#   name  = "my-local-chart"
-#   chart = "./helm-chart"
-# }
+resource "helm_release" "local" {
+  name  = "my-local-chart"
+  chart = "./helm-chart"
+}

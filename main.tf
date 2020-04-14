@@ -1,8 +1,13 @@
 provider "google" {
-  region = var.location
+  region = var.region
+}
+
+provider "google-beta" {
+  region = var.region
 }
 
 resource "google_container_cluster" "primary" {
+  provider = google-beta
   name     = var.cluster_name
   location = var.location
 
@@ -10,7 +15,7 @@ resource "google_container_cluster" "primary" {
   # separately managed node pools. So we create the smallest possible default
   # node pool and immediately delete it.
   remove_default_node_pool = true
-  initial_node_count       = 1
+  initial_node_count       = 3
 
   master_auth {
     username = ""
@@ -19,6 +24,10 @@ resource "google_container_cluster" "primary" {
     client_certificate_config {
       issue_client_certificate = true
     }
+  }
+
+  cluster_autoscaling {
+    enabled = true
   }
 }
 

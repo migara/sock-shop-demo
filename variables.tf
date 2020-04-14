@@ -2,8 +2,12 @@ variable "project" {
   default = ""
 }
 
-variable "location" {
+variable "region" {
   default = "us-central1"
+}
+
+variable "location" {
+  default = "us-central1-a"
 }
 
 variable "cluster_name" {

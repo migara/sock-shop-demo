@@ -6,10 +6,10 @@ metadata:
   labels:
     name: front-end
 spec:
-  type: NodePort
+  type: LoadBalancer
   ports:
   - port: 80
     targetPort: 8079
-    nodePort: 30001
+    protocol: TCP
   selector:
     name: front-end

@@ -11,7 +11,7 @@ variable "location" {
 }
 
 variable "instance_id" {
-  default = "01"
+  default = ""
 }
 
 # variable "cluster_name" {

@@ -3,7 +3,7 @@ provider "google" {
 }
 
 resource "google_container_cluster" "primary" {
-  name     = var.cluster_name
+  name     = "student-${var.instance_id}-cluster"
   location = var.location
 
   # We can't create a cluster with no node pool defined, but we want to only use
@@ -24,7 +24,7 @@ resource "google_container_cluster" "primary" {
 }
 
 resource "google_container_node_pool" "primary_preemptible_nodes" {
-  name       = var.node_pool
+  name       = "student-${var.instance_id}-node-pool"
   location   = var.location
   cluster    = google_container_cluster.primary.name
   node_count = 3

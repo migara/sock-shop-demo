@@ -10,12 +10,16 @@ variable "location" {
   default = "us-central1-a"
 }
 
+variable "instance_id" {
+  default = "01"
+}
+
 variable "cluster_name" {
-  default = "student-01-cluster"
+  default = "student-${var.instance_id}-cluster"
 }
 
 variable "node_pool" {
-  default = "student-01-node-pool"
+  default = "student-${var.instance_id}-node-pool"
 }
 
 variable "machine_type" {

@@ -12,4 +12,9 @@ data "google_client_config" "default" {}
 resource "helm_release" "local" {
   name  = "hipster-shop"
   chart = "./hipster-shop"
+
+  timeouts {
+    create = "30m"
+    update = "40m"
+  }
 }

@@ -1,27 +1,23 @@
-variable "project" {
-  default = ""
-}
+variable "project" {}
 
 variable "region" {
   default = "us-central1"
 }
 
 variable "location" {
-  default = "us-central1-a"
+  default = "us-central1"
 }
 
-variable "instance_id" {
-  default = ""
-}
+variable "instance_id" {}
 
-# variable "cluster_name" {
-#   default = "student-${var.instance_id}-cluster"
-# }
+variable "cluster_name" {}
 
-# variable "node_pool" {
-#   default = "student-${var.instance_id}-node-pool"
-# }
+variable "node_pool" {}
 
 variable "machine_type" {
   default = "n1-standard-1"
+}
+
+variable "initial_node_count" {
+  default = 2
 }

@@ -3,14 +3,9 @@ provider "google" {
 }
 
 resource "google_container_cluster" "primary" {
-  name     = "student-${var.instance_id}-cluster"
-  location = var.location
-
-  # We can't create a cluster with no node pool defined, but we want to only use
-  # separately managed node pools. So we create the smallest possible default
-  # node pool and immediately delete it.
-  remove_default_node_pool = true
-  initial_node_count       = 1
+  name               = var.cluster_name
+  location           = var.location
+  initial_node_count = var.initial_node_count
 
   master_auth {
     username = ""
@@ -21,31 +16,29 @@ resource "google_container_cluster" "primary" {
     }
   }
 
-}
-
-resource "google_container_node_pool" "primary_preemptible_nodes" {
-  name       = "student-${var.instance_id}-node-pool"
-  location   = var.location
-  cluster    = google_container_cluster.primary.name
-  node_count = 3
-
   node_config {
     preemptible  = true
     machine_type = var.machine_type
-
-    metadata = {
-      disable-legacy-endpoints = "true"
-    }
 
     oauth_scopes = [
       "https://www.googleapis.com/auth/logging.write",
       "https://www.googleapis.com/auth/monitoring",
     ]
+
+    metadata = {
+      disable-legacy-endpoints = "true"
+    }
+
+    labels = {
+      name = "tl-nam-student1"
+    }
+
+    tags = ["tl-nam-student1"]
   }
 
-  autoscaling {
-    min_node_count = 3
-    max_node_count = 8
+  timeouts {
+    create = "30m"
+    update = "40m"
   }
 }
 

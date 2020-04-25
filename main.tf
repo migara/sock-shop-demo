@@ -3,7 +3,7 @@ provider "google" {
 }
 
 resource "google_container_cluster" "primary" {
-  name                      = var.cluster_name
+  name                      = var.TFC_WORKSPACE_NAME
   location                  = var.location
   initial_node_count        = var.initial_node_count
   default_max_pods_per_node = 20

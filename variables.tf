@@ -6,7 +6,7 @@ variable "location" {
   default = "us-central1"
 }
 
-variable "cluster_name" {}
+# variable "cluster_name" {}
 
 variable "machine_type" {
   default = "n1-standard-1"

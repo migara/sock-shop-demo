@@ -3,9 +3,15 @@ provider "google" {
 }
 
 resource "google_container_cluster" "primary" {
-  name               = var.cluster_name
-  location           = var.location
-  initial_node_count = var.initial_node_count
+  name                      = var.cluster_name
+  location                  = var.location
+  initial_node_count        = var.initial_node_count
+  default_max_pods_per_node = 20
+
+  ip_allocation_policy {
+    cluster_ipv4_cidr_block  = "/21"
+    services_ipv4_cidr_block = "/24"
+  }
 
   master_auth {
     username = ""

@@ -15,3 +15,5 @@ variable "machine_type" {
 variable "initial_node_count" {
   default = 2
 }
+
+variable "TFC_WORKSPACE_NAME" {}
